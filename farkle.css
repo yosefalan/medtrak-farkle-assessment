@@ -63,3 +63,8 @@ body{
 	/*For dice that are selected*/
 	opacity: 0.75;
 }
+
+.scoreboard {
+	display: flex;
+	justify-content: space-between
+}
