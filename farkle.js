@@ -1,7 +1,3 @@
-// TODO
-// create scorebaord and game logic =>  create 2nd player => 2 player logic update => styling
-
-//bank vs score
 
 // TEST DICE
 // const diceArr = [
@@ -12,7 +8,6 @@
 // 	{'id': 1, 'value': 2},
 // 	{'id': 1, 'value': 5}
 // ]
-
 
 
 /*Game*/
