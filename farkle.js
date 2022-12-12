@@ -5,25 +5,34 @@
 
 //bank vs score
 
+// TEST DICE
+const diceArr = [
+	{'id': 1, 'value': 2},
+	{'id': 1, 'value': 2},
+	{'id': 1, 'value': 2},
+	{'id': 1, 'value': 2},
+	{'id': 1, 'value': 2},
+	{'id': 1, 'value': 5}
+]
 
-const diceArr = [];
+// const diceArr = [];
 
-function initializeDice(){
-	for(let i = 0; i < 6; i++){
-		diceArr[i] = {};
-		diceArr[i].id = "die" + (i + 1);
-		diceArr[i].value = i + 1;
-		diceArr[i].clicked = 0;
-	}
-}
+// function initializeDice(){
+// 	for(let i = 0; i < 6; i++){
+// 		diceArr[i] = {};
+// 		diceArr[i].id = "die" + (i + 1);
+// 		diceArr[i].value = i + 1;
+// 		diceArr[i].clicked = 0;
+// 	}
+// }
 
 /*Rolling dice values*/
 function rollDice(){
-	for(let i = 0; i < 6; i++){
-		if(diceArr[i].clicked === 0){
-			diceArr[i].value = Math.floor((Math.random() * 6) + 1);
-		}
-	}
+	// for(let i = 0; i < 6; i++){
+	// 	if(diceArr[i].clicked === 0){
+	// 		diceArr[i].value = Math.floor((Math.random() * 6) + 1);
+	// 	}
+	// }
 	updateDiceImg();
 }
 
@@ -50,27 +59,26 @@ function calculateScore(){
 			count[val] = 0;
 	} count[val] += 1
 
-		// if(diceArr[i].value === 1) {
-		// 	score += 100;
-		// } else if(dice[i].value === 5){
-		// 	score += 50;
-		// }
 	}
 
 	for (let num in count) {
-		console.log(num)
+		console.log(num, count[num])
 		if (count[num] === 3) {
-			if (num === 1) score += 1000;
-			if (num === 2) score += 200;
-			if (num === 3) score += 300;
-			if (num === 4) score += 400;
-			if (num === 5) score += 500;
-			if (num === 6) score += 600;
+			if (num == 1) console.log(num)
+			if (num == 1) score += 1000;
+			if (num == 2) score += 200;
+			if (num == 3) score += 300;
+			if (num == 4) score += 400;
+			if (num == 5) score += 500;
+			if (num == 6) score += 600;
 		}
 		else if (count[num] === 4) score += 2000;
 		else if (count[num] === 5) score += 3000;
+		else if (num == 1 && count[num] < 3) score += 100 * count[num];
+		else if (num == 5 && count[num] < 3) score += 50 * count[num];
 	}
-	console.log("IIIIIII", count)
+	console.log("IIIIIII", score)
+	document.querySelector('.score').innerHTML = score;
 }
 
 
