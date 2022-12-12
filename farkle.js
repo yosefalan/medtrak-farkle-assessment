@@ -1,38 +1,40 @@
 // TODO
 // create scorebaord and game logic =>  create 2nd player => 2 player logic update => styling
 
-
-
 //bank vs score
 
 // TEST DICE
-const diceArr = [
-	{'id': 1, 'value': 2},
-	{'id': 1, 'value': 2},
-	{'id': 1, 'value': 2},
-	{'id': 1, 'value': 2},
-	{'id': 1, 'value': 2},
-	{'id': 1, 'value': 5}
-]
+// const diceArr = [
+// 	{'id': 1, 'value': 2},
+// 	{'id': 1, 'value': 2},
+// 	{'id': 1, 'value': 2},
+// 	{'id': 1, 'value': 2},
+// 	{'id': 1, 'value': 2},
+// 	{'id': 1, 'value': 5}
+// ]
 
-// const diceArr = [];
 
-// function initializeDice(){
-// 	for(let i = 0; i < 6; i++){
-// 		diceArr[i] = {};
-// 		diceArr[i].id = "die" + (i + 1);
-// 		diceArr[i].value = i + 1;
-// 		diceArr[i].clicked = 0;
-// 	}
-// }
+
+/*Game*/
+
+const diceArr = [];
+
+function initializeDice(){
+	for(let i = 0; i < 6; i++){
+		diceArr[i] = {};
+		diceArr[i].id = "die" + (i + 1);
+		diceArr[i].value = i + 1;
+		diceArr[i].clicked = 0;
+	}
+}
 
 /*Rolling dice values*/
 function rollDice(){
-	// for(let i = 0; i < 6; i++){
-	// 	if(diceArr[i].clicked === 0){
-	// 		diceArr[i].value = Math.floor((Math.random() * 6) + 1);
-	// 	}
-	// }
+	for(let i = 0; i < 6; i++){
+		if(diceArr[i].clicked === 0){
+			diceArr[i].value = Math.floor((Math.random() * 6) + 1);
+		}
+	}
 	updateDiceImg();
 }
 
@@ -47,7 +49,7 @@ function updateDiceImg(){
 }
 
 function calculateScore(){
-	//todo calc score logic
+
 	let s = 'restful';
 	let score = 0;
 	let count = {};
@@ -62,9 +64,9 @@ function calculateScore(){
 	}
 
 	for (let num in count) {
-		console.log(num, count[num])
+
 		if (count[num] === 3) {
-			if (num == 1) console.log(num)
+
 			if (num == 1) score += 1000;
 			if (num == 2) score += 200;
 			if (num == 3) score += 300;
@@ -72,25 +74,26 @@ function calculateScore(){
 			if (num == 5) score += 500;
 			if (num == 6) score += 600;
 		}
+
 		else if (count[num] === 4) score += 2000;
 		else if (count[num] === 5) score += 3000;
 		else if (num == 1 && count[num] < 3) score += 100 * count[num];
 		else if (num == 5 && count[num] < 3) score += 50 * count[num];
 	}
-	console.log("IIIIIII", score)
 	document.querySelector('.score').innerHTML = score;
 }
 
 
 
-// function diceClick(img){
-// 	let i = img.getAttribute("data-number");
+function diceClick(img){
+	let i = img.getAttribute("data-number");
+	console.log(i)
 
-// 	img.classList.toggle("transparent");
-// 	if(diceArr[i].clicked === 0){
-// 		diceArr[i].clicked == 1;
-// 	}
-// 	else{
-// 		diceArr[i].clicked == 0;
-// 	}
-// }
+	img.classList.toggle("transparent");
+	if(diceArr[i].clicked === 0){
+		diceArr[i].clicked = 1;
+	}
+	else{
+		diceArr[i].clicked = 0;
+	}
+}
